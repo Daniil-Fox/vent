@@ -1,4 +1,5 @@
 .popular {
+  padding-top: 12rem;
   padding-bottom: 18rem;
 
   &__title {
@@ -19,13 +20,13 @@
   }
 
   &__btn {
-    border: 1px solid #fff;
+    border: 1px solid var(--text-color);
     border-radius: .5rem;
     padding: 1rem 1rem 1.3rem 1rem;
 
     font-weight: 600;
     font-size: 1.8rem;
-    color: #fff;
+    color: var(--text-color);
 
     transition: color .3s ease-out, border-color .3s ease-out;
 
@@ -35,8 +36,8 @@
     }
 
     @include hover {
-      border-color: #3fb4f4;
-      color: #3fb4f4;
+      border-color: #fff;
+      color: #fff;
     }
   }
 
@@ -50,7 +51,7 @@
 
 
 .popular-item {
-  background-color: #6b9bb6;
+  background-color: #e9f4f5;
   padding: 3rem 5.2rem;
   padding-top: 5rem;
   position: relative;
@@ -60,29 +61,45 @@
   justify-content: space-between;
 
   &--light-blue {
-    background-color: #65a8cb;
+    background-color: #e9f4f5;
   }
 
   &--blue {
-    background-color: #6b9bb6;
+    background-color: #e9f4f5;
   }
 
   &--dark-blue {
-    background-color: #569cc1;
+    background-color: #e9f4f5;
   }
 
   @include hover {
-    background-color: #3fb4f4;
+    background-color: #74d0ed;
 
     .popular-item {
       &__image {
         filter: saturate(1);
       }
+
+      &__theme {
+        border-color: #fff;
+        color: #fff;
+      }
+
+      &__title,
+      &__price {
+        color: #fff;
+      }
+
+      &__btn {
+        svg {
+          fill: #fff;
+        }
+      }
     }
   }
 
   &__theme {
-    border: 1px solid #fff;
+    border: 1px solid var(--text-color);
     border-radius: .5rem;
     padding: 1rem;
     position: absolute;
@@ -92,7 +109,9 @@
     font-weight: 600;
     font-size: 1.2rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-color);
+
+    transition: color .3s ease-out, border-color .3s ease-out;
   }
 
   &__image {
@@ -134,7 +153,9 @@
     text-align: center;
     font-weight: 400;
     font-size: 2.4rem;
-    color: #fff;
+    color: var(--text-color);
+
+    transition: color .3s ease-out;
   }
 
   &__buttons {
@@ -156,6 +177,9 @@
     svg {
       width: 100%;
       height: 100%;
+      fill: var(--text-color);
+
+      transition: fill .3s ease-out;
     }
   }
 
@@ -166,6 +190,7 @@
     align-items: center;
     font-weight: 600;
     font-size: 2.8rem;
-    color: #fff;
+    color: var(--text-color);
+    transition: color .3s ease-out;
   }
 }

@@ -21,7 +21,7 @@
     font-weight: 700;
     font-size: 9.6rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-color);
   }
 
   &__subtitle {
@@ -30,7 +30,7 @@
     font-weight: 600;
     font-size: 4.8rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-color);
   }
 
   &__bottom {
@@ -45,7 +45,7 @@
     font-weight: 600;
     font-size: 2rem;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-color);
   }
 
   &__background {

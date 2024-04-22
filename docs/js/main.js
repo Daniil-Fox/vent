@@ -12,6 +12,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_fluids__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/fluids */ "./src/js/components/fluids.js");
 /* harmony import */ var _components_fluids__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_components_fluids__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_sliders__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/sliders */ "./src/js/components/sliders.js");
+/* harmony import */ var _components_equip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/equip */ "./src/js/components/equip.js");
+/* harmony import */ var _components_equip__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_components_equip__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -149,13 +152,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/js/components/equip.js":
+/*!************************************!*\
+  !*** ./src/js/components/equip.js ***!
+  \************************************/
+/***/ (() => {
+
+const eqItems = document.querySelectorAll(".equip");
+const eqImages = document.querySelectorAll(".equipment__image");
+eqItems.forEach(item => {
+  item.addEventListener("click", e => {
+    e.preventDefault();
+    clearActive();
+    const dataset = item.dataset.tab;
+    const current = [...eqImages].find(item => item.dataset.tab == dataset);
+    current.classList.add("active");
+    item.classList.add("active");
+  });
+});
+function clearActive() {
+  eqItems.forEach(el => el.classList.remove("active"));
+  eqImages.forEach(el => el.classList.remove("active"));
+}
+
+/***/ }),
+
 /***/ "./src/js/components/fluids.js":
 /*!*************************************!*\
   !*** ./src/js/components/fluids.js ***!
   \*************************************/
 /***/ (() => {
 
-const canvas = document.querySelector('.canvas');
+const canvas = document.querySelector(".canvas");
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 // canvas.fillStyle = "rgba(0,0,0,1)"
@@ -181,17 +209,17 @@ function getWebGLContext(canvas) {
     stencil: false,
     antialias: false
   };
-  let gl = canvas.getContext('webgl2', params);
+  let gl = canvas.getContext("webgl2", params);
   const isWebGL2 = !!gl;
-  if (!isWebGL2) gl = canvas.getContext('webgl', params) || canvas.getContext('experimental-webgl', params);
+  if (!isWebGL2) gl = canvas.getContext("webgl", params) || canvas.getContext("experimental-webgl", params);
   let halfFloat;
   let supportLinearFiltering;
   if (isWebGL2) {
-    gl.getExtension('EXT_color_buffer_float');
-    supportLinearFiltering = gl.getExtension('OES_texture_float_linear');
+    gl.getExtension("EXT_color_buffer_float");
+    supportLinearFiltering = gl.getExtension("OES_texture_float_linear");
   } else {
-    halfFloat = gl.getExtension('OES_texture_half_float');
-    supportLinearFiltering = gl.getExtension('OES_texture_half_float_linear');
+    halfFloat = gl.getExtension("OES_texture_half_float");
+    supportLinearFiltering = gl.getExtension("OES_texture_half_float_linear");
   }
   gl.clearColor(0, 0, 0, 1.0);
   const halfFloatTexType = isWebGL2 ? gl.HALF_FLOAT : halfFloat.HALF_FLOAT_OES;
@@ -285,7 +313,6 @@ function compileShader(type, source) {
   if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(shader);
   return shader;
 }
-;
 const baseVertexShader = compileShader(gl.VERTEX_SHADER, `
     precision highp float;
     precision mediump sampler2D;
@@ -342,7 +369,7 @@ const displayShader = compileShader(gl.FRAGMENT_SHADER, `
         vec4 ciro1 = mix(vec4(255, 255, 255, 0),vec4(255, 255, 255, 0),cir1);
 
 
-        vec4 cirL = min(min(ciro1,ciro), vec4(0.18, 0.52, 0.67, 1.0));
+        vec4 cirL = min(min(ciro1,ciro), vec4(0.8, 0.9, 0.97, 1));
 
         // gl_FragColor =  min(out1,cirL);
         gl_FragColor =  (cirL)- texture2D(uTexture, vUv);
@@ -733,14 +760,14 @@ function resizeCanvas() {
     initFramebuffers();
   }
 }
-canvas.addEventListener('mousemove', e => {
+canvas.addEventListener("mousemove", e => {
   pointers[0].moved = pointers[0].down;
   pointers[0].dx = (e.offsetX - pointers[0].x) * 10.0;
   pointers[0].dy = (e.offsetY - pointers[0].y) * 10.0;
   pointers[0].x = e.offsetX;
   pointers[0].y = e.offsetY;
 });
-canvas.addEventListener('touchmove', e => {
+canvas.addEventListener("touchmove", e => {
   //e.preventDefault();
   const touches = e.targetTouches;
   for (let i = 0; i < touches.length; i++) {
@@ -752,11 +779,11 @@ canvas.addEventListener('touchmove', e => {
     pointer.y = touches[i].pageY;
   }
 }, false);
-canvas.addEventListener('mousemove', () => {
+canvas.addEventListener("mousemove", () => {
   pointers[0].down = true;
   pointers[0].color = [-0.1, -0.1, -0.1];
 });
-canvas.addEventListener('touchstart', e => {
+canvas.addEventListener("touchstart", e => {
   console.log(4);
   //e.preventDefault();
   const touches = e.targetTouches;
@@ -769,10 +796,10 @@ canvas.addEventListener('touchstart', e => {
     pointers[i].color = [-0.1, -0.1, -0.1];
   }
 });
-window.addEventListener('mouseup', () => {
+window.addEventListener("mouseup", () => {
   pointers[0].down = false;
 });
-window.addEventListener('touchend', e => {
+window.addEventListener("touchend", e => {
   const touches = e.changedTouches;
   for (let i = 0; i < touches.length; i++) for (let j = 0; j < pointers.length; j++) if (touches[i].identifier == pointers[j].id) pointers[j].down = false;
 });

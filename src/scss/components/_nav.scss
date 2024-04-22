@@ -19,11 +19,12 @@
     font-weight: 400;
     font-size: 1.8rem;
     text-align: center;
-    color: #fff;
-    transition: background-color .3s ease-out;
+    color: var(--text-color);
+    transition: background-color .3s ease-out, color .3s ease-out;
 
     @include hover {
-      background-color: #3fb4f4;
+      background-color: #74d0ed;
+      color: #fff;
     }
   }
 }
