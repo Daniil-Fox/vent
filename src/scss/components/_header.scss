@@ -6,6 +6,13 @@
   width: 100%;
   transform: translateX(-50%);
 
+  &__container {
+    @include tablet {
+      max-width: 100%;
+      width: 100%;
+      padding: 0;
+    }
+  }
 
   &__container,
   &__right,
@@ -23,11 +30,27 @@
     border-left: 1px solid #397a9e;
     border-right: 1px solid #397a9e;
     padding: 1rem;
+    padding: 2.6rem 1.5rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .3s ease-out;
+
+    @include tablet {
+      width: 17rem;
+      padding: 1rem;
+    }
 
     img {
       display: block;
       height: 8.8rem;
       width: 25.6rem;
+
+      @include tablet {
+        width: 14rem;
+        height: auto;
+      }
     }
   }
 
@@ -37,6 +60,14 @@
     justify-content: center;
     gap: 4rem;
     border-right: 1px solid #397a9e;
+    transition: border-color .3s ease-out;
+
+    @include tablet {
+      padding: 1.15rem 0.45rem;
+      gap: 3rem;
+      width: 100%;
+      height: 50%;
+    }
   }
 
   &__btn {
@@ -44,15 +75,27 @@
     width: 3.5rem;
     height: 3.5rem;
 
+    @include tablet {
+      width: 2.7rem;
+      height: 2.7rem;
+    }
+
     svg {
       width: 100%;
       height: 100%;
+      fill: #397A9E;
     }
   }
 
   &__top {
     height: 50%;
     border-bottom: 1px solid #397a9e;
+    transition: border-color .3s ease-out;
+
+    @include tablet {
+      flex-wrap: wrap;
+      height: 100%;
+    }
   }
 
   &__link {
@@ -65,12 +108,70 @@
     text-align: center;
     color: var(--text-color);
     border-right: 1px solid #397a9e;
+
+    @include tablet {
+      display: none;
+    }
   }
 
   &__nav {
     height: 50%;
     border-bottom: 1px solid #397a9e;
     border-right: 1px solid #397a9e;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    width: 7rem;
+    flex-shrink: 0;
+    border-bottom: 1px solid #397a9e;
+
+    display: none;
+    transition: border-color .3s ease-out;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+}
+
+.burger {
+  width: 100%;
+  position: relative;
+
+  &__line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--text-color);
+    }
+
+    &::before {
+      top: -1rem;
+    }
+
+    &::after {
+      top: 1rem;
+    }
   }
 }
 
@@ -80,6 +181,13 @@
   position: relative;
   display: block;
   border-right: 1px solid var(--text-color);
+  height: 100%;
+  transition: border-color .3s ease-out;
+
+  @include tablet {
+    width: 100%;
+    height: 50%;
+  }
 
   &__label,
   &__input {
@@ -115,6 +223,8 @@
       width: 100%;
       height: 100%;
       fill: var(--text-color);
+
+      transition: fill .3s ease-out;
     }
   }
 }

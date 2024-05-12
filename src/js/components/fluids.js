@@ -234,7 +234,7 @@ const displayShader = compileShader(
         vec4 ciro1 = mix(vec4(255, 255, 255, 0),vec4(255, 255, 255, 0),cir1);
 
 
-        vec4 cirL = min(min(ciro1,ciro), vec4(0.8, 0.9, 0.97, 1));
+        vec4 cirL = min(min(ciro1,ciro), vec4(.91, .91, .91, 0.9));
 
         // gl_FragColor =  min(out1,cirL);
         gl_FragColor =  (cirL)- texture2D(uTexture, vUv);

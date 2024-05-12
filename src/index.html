@@ -5,13 +5,24 @@
 
 <body class="page__body">
   <div class="site-container">
-    @include('partials/header.html')
     <main class="main">
-      @include('partials/hero.html')
-      @include('partials/results.html')
-      @include('partials/equipment.html')
+      <div class="swiper main-slider">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            @include('partials/header.html')
+            @include('partials/menu.html')
+            @include('partials/hero.html')
+          </div>
+          <div class="swiper-slide">
+            @include('partials/equipment.html')
+          </div>
+          <div class="swiper-slide no-swiper">
+            @include('partials/popular.html')
+          </div>
+        </div>
+      </div>
+      <!-- @include('partials/results.html') -->
       <!-- @include('partials/new.html') -->
-      @include('partials/popular.html')
     </main>
     @include('partials/footer.html')
   </div>

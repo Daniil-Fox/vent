@@ -1,6 +1,10 @@
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 192);
+
+  @media(max-width: 1024px) {
+    font-size: calc(100vw / 39);
+  }
 }
 
 *,
@@ -35,6 +39,36 @@ a {
 .site-container {
   overflow: hidden; // если используете на сайте position: sticky - уберите эту настройку
   background-color: #e0f4f5;
+
+  &.menu-active {
+    .header {
+
+      &__logo,
+      &__buttons,
+      &__top,
+      &__burger,
+      &__search {
+        border-color: #fff;
+      }
+
+      &__btn {
+        svg {
+          fill: #fff !important;
+        }
+      }
+    }
+
+    .burger {
+      &__line {
+        background-color: #fff;
+
+        &::before,
+        &::after {
+          background-color: #fff;
+        }
+      }
+    }
+  }
 }
 
 .is-hidden {
@@ -115,7 +149,11 @@ a {
   font-size: 6.4rem;
   text-transform: uppercase;
   text-align: center;
-  color: #fff;
+  color: #397a9e;
+
+  @include tablet {
+    font-size: 4rem;
+  }
 }
 
 .btn {
@@ -132,4 +170,35 @@ a {
   font-size: 2.8rem;
   text-align: center;
   color: #fff;
+}
+
+.main-slider {
+  min-height: 0;
+
+  height: 100vh;
+  z-index: 100;
+
+
+  @include tablet {
+    height: unset;
+  }
+
+  &>.swiper-wrapper {
+    flex-direction: column;
+
+    &>.swiper-slide {
+      height: 100vh;
+      height: auto;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      &:last-child {
+        overflow-y: auto;
+      }
+
+      @include tablet {
+        height: unset;
+      }
+    }
+  }
 }

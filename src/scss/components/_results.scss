@@ -4,6 +4,10 @@
   padding: 1rem 0;
   background-color: #74d0ed;
 
+  @include tablet {
+    margin-bottom: 5rem;
+  }
+
   &__wrapper {
     min-width: 100%;
     display: flex;
@@ -25,6 +29,10 @@
     text-transform: uppercase;
     color: #fff;
     white-space: nowrap;
+
+    @include tablet {
+      font-size: 6.4rem;
+    }
   }
 }
 
