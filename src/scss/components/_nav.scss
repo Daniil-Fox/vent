@@ -4,6 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-right: 1px solid #397a9e;
+
+    transition: flex-grow .3s ease-out;
+    will-change: flex-grow;
   }
 
   &__item {
@@ -15,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.8rem 5rem;
+    padding: 1.8rem 2rem;
     font-weight: 400;
     font-size: 1.8rem;
     text-align: center;

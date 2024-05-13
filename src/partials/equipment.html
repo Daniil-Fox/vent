@@ -1,9 +1,6 @@
 <section class="equipment">
   <div class="equipment__container">
     <div class="equipment__background">
-      <div class="equipment__image active">
-        <img src="./img/equip/base.png" alt="">
-      </div>
       <div class="equipment__image" data-tab="1">
         <img src="./img/equip/01.png" alt="">
       </div>
@@ -23,34 +20,48 @@
         <img src="./img/equip/06.png" alt="">
       </div>
     </div>
-    <div class="equipment__items">
-      <div class="equipment__row">
-        <div class="equip" data-tab="1">
-          <span class="equip__text">Жилых домов</span>
+    <div class="equipment__panel panel">
+      <div class="panel__top">
+        <div class="panel__control">
+          <div class="panel__btn panel__btn--prev">
+            <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.3333 22.8332L1.5 11.9998L12.3333 1.1665" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="panel__btn panel__btn--next">
+            <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1.66667 22.8332L12.5 11.9998L1.66667 1.1665" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
         </div>
-        <div class="equip" data-tab="2">
-          <span class="equip__text">ТОрговых центров</span>
-        </div>
+        <ul class="panel__pagination list-reset"></ul>
       </div>
-      <div class="equipment__row">
-        <div class="equip" data-tab="3">
-          <span class="equip__text">Бизнес-центров</span>
+      <div class="panel__container">
+        <div class="panel__left">
+          <span class="panel__title">Оснащение</span>
+          <div class="panel__text">
+            <p class="panel__desc">
+              Для тех, кто ценит климат и качество воздуха
+            </p>
+            <div class="panel__fpagination">
+              <span>01</span> 06
+            </div>
+          </div>
         </div>
-        <div class="equip equip--eq">
-          <span class="equip__text">Оснащение</span>
-        </div>
-        <div class="equip" data-tab="4">
-          <span class="equip__text">Поликлиник</span>
-        </div>
-      </div>
-      <div class="equipment__row">
-        <div class="equip" data-tab="5">
-          <span class="equip__text">Школ</span>
-        </div>
-        <div class="equip" data-tab="6">
-          <span class="equip__text">Производств</span>
-        </div>
+        <ul class="list-reset panel__list">
+          <li class="panel__item" data-tab-btn="1">Жилых домов</li>
+          <li class="panel__item" data-tab-btn="2">Торговых центров</li>
+          <li class="panel__item" data-tab-btn="3">Школ</li>
+          <li class="panel__item" data-tab-btn="4">Поликлиник</li>
+          <li class="panel__item" data-tab-btn="5">Бизнес-центров</li>
+          <li class="panel__item" data-tab-btn="6">Производств</li>
+        </ul>
       </div>
     </div>
+  </div>
+  <div class="equipment__menu">
+    <span>Меню</span>
   </div>
 </section>

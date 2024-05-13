@@ -1,12 +1,15 @@
 .header {
-  position: absolute;
+  position: fixed;
   z-index: 900;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 0;
   width: 100%;
-  transform: translateX(-50%);
+  transition: transform .5s ease-out;
 
   &__container {
+    flex-grow: 1;
+
     @include tablet {
       max-width: 100%;
       width: 100%;
@@ -23,6 +26,9 @@
 
   &__right {
     flex-direction: column;
+
+    transition: background-color .3s ease-out, width .3s ease-out;
+    will-change: width;
   }
 
   &__logo {
@@ -36,10 +42,15 @@
     align-items: center;
     justify-content: center;
     transition: border-color .3s ease-out;
+    flex-grow: 1;
 
     @include tablet {
       width: 17rem;
       padding: 1rem;
+    }
+
+    a {
+      display: block;
     }
 
     img {
@@ -98,15 +109,31 @@
     }
   }
 
+  &__cat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background-color: #397a9e;
+    min-width: 28rem;
+
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-align: center;
+    color: #fff;
+  }
+
   &__link {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.8rem 6.5rem;
+    padding: 1.8rem 2rem;
     font-weight: 400;
     font-size: 1.8rem;
     text-align: center;
     color: var(--text-color);
+    width: 19.6rem;
+
     border-right: 1px solid #397a9e;
 
     @include tablet {
@@ -115,9 +142,9 @@
   }
 
   &__nav {
+    display: flex;
     height: 50%;
     border-bottom: 1px solid #397a9e;
-    border-right: 1px solid #397a9e;
 
     @include tablet {
       display: none;
@@ -177,7 +204,7 @@
 
 
 .header-search {
-  width: 42rem;
+  flex-grow: 1;
   position: relative;
   display: block;
   border-right: 1px solid var(--text-color);
@@ -226,5 +253,29 @@
 
       transition: fill .3s ease-out;
     }
+  }
+}
+
+
+.header.logo-down {
+  .header__logo {
+    align-items: flex-end;
+    padding: .7rem 5rem;
+
+    img {
+      height: 4.6rem;
+      width: 17.8rem;
+    }
+  }
+}
+
+.header.high-width {
+  .nav__list {
+    flex-grow: 1;
+  }
+
+  .header__right {
+    width: 100%;
+    background-color: #eff6f6;
   }
 }

@@ -26,3 +26,28 @@ if (window.matchMedia("(max-width: 1024px)").matches) {
     });
   });
 }
+
+const menuBtn = document.querySelector(".equipment__menu");
+const header = document.querySelector(".header");
+const menuText = menuBtn.querySelector("span");
+menuBtn.addEventListener("click", (e) => {
+  let isActive = header.classList.toggle("active");
+
+  header.style.transform = isActive ? "translateY(0)" : "translateY(-100%)";
+
+  if (isActive) {
+    menuText.style.transform = "translateX(15rem)";
+    setTimeout(() => {
+      menuText.textContent = "Закрыть";
+      menuText.style.transform = null;
+    }, 300);
+  } else {
+    menuText.style.transform = "translateX(15rem)";
+
+    setTimeout(() => {
+      menuText.textContent = "Меню";
+      menuText.style.transform = null;
+    }, 300);
+    setTimeout(() => {});
+  }
+});

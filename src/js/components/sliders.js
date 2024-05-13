@@ -50,42 +50,77 @@ window.addEventListener("DOMContentLoaded", () => {
     breakpoint.addEventListener("change", checker);
     checker();
   };
-
+  const header = document.querySelector(".header");
+  const headerLogo = header.querySelector(".header__logo");
   const someFunc = (instance) => {
     if (instance) {
       instance.on("slideChange", function (e) {
-        console.log("*** mySwiper.activeIndex", instance.activeIndex);
+        if (instance.activeIndex == 1) {
+          header.style.transform = "translateY(-100%)";
+          header.classList.remove("logo-down");
+          header.classList.remove("active");
+          setTimeout(() => {
+            headerLogo.style.display = "none";
+            header.classList.add("high-width");
+          }, 500);
+        } else if (instance.activeIndex == 2) {
+          setTimeout(() => {
+            header.style.transform = "translateY(-100%)";
+          }, 500);
+          setTimeout(() => {
+            headerLogo.style.display = null;
+            header.style.transform = "translateY(-50%)";
+            header.classList.remove("high-width");
+            header.classList.add("logo-down");
+          }, 1000);
+        } else {
+          header.classList.remove("active");
+          setTimeout(() => {
+            header.style.transform = "translateY(-100%)";
+            headerLogo.style.display = null;
+          }, 500);
+          setTimeout(() => {
+            header.style.transform = null;
+            header.classList.remove("high-width");
+            header.classList.remove("logo-down");
+          }, 1000);
+        }
       });
     }
   };
 
-  resizableSwiper("(min-width: 1024px)", ".main-slider", {
-    modules: [Mousewheel, FreeMode],
-    slidesPerView: 1,
-    speed: 800,
-    direction: "vertical",
-    mousewheelControl: mouse,
-    mousewheel: {
-      noMousewheelClass: "nowheel",
-      releaseOnEdges: true,
+  resizableSwiper(
+    "(min-width: 1024px)",
+    ".main-slider",
+    {
+      modules: [Mousewheel, FreeMode],
+      slidesPerView: 1,
+      speed: 800,
+      direction: "vertical",
+      mousewheelControl: mouse,
+      mousewheel: {
+        noMousewheelClass: "nowheel",
+        releaseOnEdges: true,
+      },
     },
-  });
-  resizableSwiper("(min-width: 1025px)", ".popular-slider--rec", {
+    someFunc
+  );
+  resizableSwiper("(min-width: 1025px)", ".popular__slider--rec", {
     modules: [Navigation],
     slidesPerView: 5,
     speed: 600,
     navigation: {
-      prevEl: ".popular__control-btn--prev",
-      nextEl: ".popular__control-btn--next",
+      prevEl: ".rec-prev",
+      nextEl: ".rec-next",
     },
   });
-  resizableSwiper("(min-width: 1025px)", ".popular-slider--pop", {
+  resizableSwiper("(min-width: 1025px)", ".popular__slider--pop", {
     modules: [Navigation],
     slidesPerView: 5,
     speed: 600,
     navigation: {
-      prevEl: ".popular__control-btn--prev",
-      nextEl: ".popular__control-btn--next",
+      prevEl: ".pop-prev",
+      nextEl: ".pop-next",
     },
   });
   const slides = document.querySelectorAll(
