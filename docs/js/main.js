@@ -172,7 +172,7 @@ function clearActive() {
   eqImages.forEach(el => el.classList.remove("active"));
 }
 eqItems.forEach((el, index) => {
-  el.addEventListener("click", e => {
+  el.addEventListener("mouseenter", e => {
     clearActive();
     const dataset = el.dataset.tab;
     document.querySelector(`.equipment__image[data-tab="${dataset}"]`).classList.add("active");
