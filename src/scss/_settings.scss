@@ -180,7 +180,7 @@ a {
 
 
   @include tablet {
-    height: unset;
+    // height: unset;
   }
 
   &>.swiper-wrapper {
@@ -192,12 +192,14 @@ a {
       overflow: hidden;
       box-sizing: border-box;
 
+
+
       &:last-child {
         overflow-y: auto;
       }
 
       @include tablet {
-        height: unset;
+        // height: unset;
       }
     }
   }

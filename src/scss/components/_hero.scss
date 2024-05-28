@@ -5,7 +5,7 @@
   z-index: 2;
 
   @include tablet {
-    height: unset;
+    // height: unset;
     padding-top: 16rem;
     padding-bottom: 20rem;
   }

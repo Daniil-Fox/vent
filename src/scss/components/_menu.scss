@@ -9,11 +9,11 @@
   transform: translateX(100%);
   z-index: -1;
 
-  transition: transform .3s ease-out, z-index .3s ease-out;
+  transition: transform .3s ease-out .3s, z-index .3s ease-out;
 
   &.active {
     transform: translateX(0);
-    z-index: 100;
+    z-index: 990;
   }
 
   &__body {

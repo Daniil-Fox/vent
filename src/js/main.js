@@ -3,51 +3,47 @@ import vars from "./_vars";
 import "./_functions";
 import "./_components";
 
-if (window.matchMedia("(max-width: 1024px)").matches) {
-  const sliders = document.querySelectorAll(".popular__container");
-  sliders.forEach((slider) => {
-    const popularItemsLength = slider.querySelectorAll(".popular-item").length;
-    const btnMore = slider.querySelector(".popular__more");
+// if (window.matchMedia("(max-width: 1024px)").matches) {
+//   const sliders = document.querySelectorAll(".popular__container");
+//   sliders.forEach((slider) => {
+//     const popularItemsLength = slider.querySelectorAll(".popular-item").length;
+//     const btnMore = slider.querySelector(".popular__more");
 
-    let items = 3;
-    const arr = Array.from(slider.querySelector(".popular__items").children);
-    const visItems = arr.slice(0, items);
-    visItems.forEach((item) => item.classList.add("is-visible"));
+//     let items = 3;
+//     const arr = Array.from(slider.querySelector(".popular__items").children);
+//     const visItems = arr.slice(0, items);
+//     visItems.forEach((item) => item.classList.add("is-visible"));
 
-    btnMore.addEventListener("click", (e) => {
-      items += 3;
+//     btnMore.addEventListener("click", (e) => {
+//       items += 3;
 
-      const visItems = arr.slice(0, items);
-      visItems.forEach((item) => item.classList.add("is-visible"));
+//       const visItems = arr.slice(0, items);
+//       visItems.forEach((item) => item.classList.add("is-visible"));
 
-      if (visItems.length == popularItemsLength) {
-        btnMore.style.display = "none";
-      }
-    });
-  });
-}
-
-const menuBtn = document.querySelector(".equipment__menu");
+//       if (visItems.length == popularItemsLength) {
+//         btnMore.style.display = "none";
+//       }
+//     });
+//   });
+// }
 const header = document.querySelector(".header");
-const menuText = menuBtn.querySelector("span");
-menuBtn.addEventListener("click", (e) => {
-  let isActive = header.classList.toggle("active");
+const mBtn = document.querySelector(".header__m");
 
-  header.style.transform = isActive ? "translateY(0)" : "translateY(-100%)";
+mBtn.addEventListener("click", (e) => {
+  let isActive = mBtn.classList.toggle("active");
 
   if (isActive) {
-    menuText.style.transform = "translateX(15rem)";
-    setTimeout(() => {
-      menuText.textContent = "Закрыть";
-      menuText.style.transform = null;
-    }, 300);
+    header.style.transform = "translateY(0)";
+    header.classList.remove("logo-down");
   } else {
-    menuText.style.transform = "translateX(15rem)";
-
-    setTimeout(() => {
-      menuText.textContent = "Меню";
-      menuText.style.transform = null;
-    }, 300);
-    setTimeout(() => {});
+    header.style.transform = "translateY(-50%)";
+    header.classList.add("logo-down");
   }
 });
+
+const appHeight = () => {
+  const doc = document.documentElement;
+  doc.style.setProperty("--app-height", `${window.innerHeight}px`);
+};
+window.addEventListener("resize", appHeight);
+appHeight();
